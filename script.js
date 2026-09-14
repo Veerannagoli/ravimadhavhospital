@@ -62,3 +62,165 @@ ${message}
 Please let me know the consultation / availability details.`;
  window.open("https://wa.me/919581533399?text="+encodeURIComponent(text),"_blank");
 });
+/* =========================================================
+   DOCTOR PROFILE INFORMATION
+   ========================================================= */
+
+const doctorProfiles = {
+  padmini: {
+    title: "Dr. Chityala Padmini",
+    qualification: "MBBS, D.D. · Dermatologist",
+    description: "Dermatology-focused consultation with attention to skin, hair and nail-related medical concerns.",
+    points: [
+      "Dermatology-focused consultation",
+      "Venereology",
+      "Skin / Hair / Nails medical cases",
+      "Skin-related medical concerns"
+    ],
+    note: "Call to confirm current consultation availability."
+  },
+
+  surendra: {
+    title: "Dr. Chityala Surendra Kumar",
+    qualification: "MD · Pulmonologist & Intensivist",
+    description: "Supplied hospital material identifies Dr. Chityala Surendra Kumar with pulmonary medicine. He also treats General Medical cases, Diabetes / Diabetology and medical emergencies.",
+    points: [
+      "Respiratory-focused consultation",
+      "General Medicine / Diabetology",
+      "Diabetes / Diabetology",
+      "Emergency Medical Services"
+    ],
+    note: "Call to confirm current consultation availability."
+  }
+};
+
+
+/* =========================================================
+   CONSULTATION TIMINGS
+   ========================================================= */
+
+const consultationTimings = `
+  <div class="profile-timings">
+    <h4>Consultation Timings</h4>
+
+    <div class="timing-row">
+      <span>Monday – Saturday</span>
+      <strong>10:00 AM – 1:00 PM</strong>
+    </div>
+
+    <div class="timing-row">
+      <span>Evening</span>
+      <strong>6:00 PM – 8:00 PM</strong>
+    </div>
+
+    <div class="timing-row">
+      <span>Sunday</span>
+      <strong>10:00 AM – 1:00 PM</strong>
+    </div>
+  </div>
+`;
+
+
+/* =========================================================
+   VIEW PROFILE BUTTONS
+   ========================================================= */
+
+document.querySelectorAll("[data-doctor]").forEach(button => {
+
+  button.addEventListener("click", function () {
+
+    const doctorId = this.dataset.doctor;
+    const doctor = doctorProfiles[doctorId];
+
+    if (!doctor) return;
+
+    const modal = document.getElementById("modal");
+    const modalBody = document.getElementById("modalBody");
+
+    modalBody.innerHTML = `
+      <div class="doctor-profile-modal">
+
+        <div class="profile-label">
+          DOCTOR PROFILE
+        </div>
+
+        <h2>${doctor.title}</h2>
+
+        <div class="profile-qualification">
+          ${doctor.qualification}
+        </div>
+
+        <p class="profile-description">
+          ${doctor.description}
+        </p>
+
+        <div class="profile-points">
+          ${doctor.points.map(point => `
+            <div class="profile-point">
+              <span>✓</span>
+              <p>${point}</p>
+            </div>
+          `).join("")}
+        </div>
+
+        ${consultationTimings}
+
+        <div class="profile-note">
+          ${doctor.note}
+        </div>
+
+        <a
+          class="profile-call-button"
+          href="tel:+919581533399"
+        >
+          Call Hospital
+          <span>→</span>
+        </a>
+
+      </div>
+    `;
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+
+  });
+
+});
+
+
+/* =========================================================
+   CLOSE MODAL
+   ========================================================= */
+
+document.querySelectorAll("[data-close]").forEach(element => {
+
+  element.addEventListener("click", function () {
+
+    const modal = document.getElementById("modal");
+
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+
+  });
+
+});
+
+
+/* =========================================================
+   ESC KEY CLOSE
+   ========================================================= */
+
+document.addEventListener("keydown", function(event) {
+
+  if (event.key === "Escape") {
+
+    const modal = document.getElementById("modal");
+
+    if (modal) {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+  }
+
+});
