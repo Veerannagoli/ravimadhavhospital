@@ -26,11 +26,11 @@ function hide(){modal.classList.remove("open");modal.setAttribute("aria-hidden",
 document.addEventListener("click",e=>{
  if(e.target.closest("[data-close]")){hide();return}
  const doctor=e.target.closest("[data-doctor]");
- if(doctor){const d=doctors[doctor.dataset.doctor];show(`<div class="modal-kicker">${d.k}</div><h2>${d.n}</h2><p><strong>${d.q}</strong></p><p>${d.p}</p><ul class="modal-list">${d.l.map(x=>`<li>✓ ${x}</li>`).join("")}</ul><a class="modal-call" href="tel:+918818220086">Call Hospital</a>`);return}
+ if(doctor){const d=doctors[doctor.dataset.doctor];show(`<div class="modal-kicker">${d.k}</div><h2>${d.n}</h2><p><strong>${d.q}</strong></p><p>${d.p}</p><ul class="modal-list">${d.l.map(x=>`<li>✓ ${x}</li>`).join("")}</ul><a class="modal-call" href="tel:+919581533399">Call Hospital</a>`);return}
  const dept=e.target.closest("[data-dept]");
- if(dept){const d=depts[dept.dataset.dept];show(`<div class="modal-kicker">${d[0]}</div><h2>${d[1]}</h2><p>${d[2]}</p><ul class="modal-list">${d[3].map(x=>`<li>✓ ${x}</li>`).join("")}</ul><a class="modal-call" href="tel:+918818220086">Call Hospital</a>`);return}
+ if(dept){const d=depts[dept.dataset.dept];show(`<div class="modal-kicker">${d[0]}</div><h2>${d[1]}</h2><p>${d[2]}</p><ul class="modal-list">${d[3].map(x=>`<li>✓ ${x}</li>`).join("")}</ul><a class="modal-call" href="tel:+919581533399">Call Hospital</a>`);return}
  const service=e.target.closest("[data-service]");
- if(service){const s=services[service.dataset.service];show(`<div class="modal-kicker">${s[0]}</div><h2>${s[1]}</h2><p>${s[2]}</p><ul class="modal-list"><li>✓ Call to confirm current details</li><li>✓ Send an enquiry through the appointment form</li></ul><a class="modal-call" href="tel:+918818220086">Call Hospital</a>`);return}
+ if(service){const s=services[service.dataset.service];show(`<div class="modal-kicker">${s[0]}</div><h2>${s[1]}</h2><p>${s[2]}</p><ul class="modal-list"><li>✓ Call to confirm current details</li><li>✓ Send an enquiry through the appointment form</li></ul><a class="modal-call" href="tel:+919581533399">Call Hospital</a>`);return}
 });
 document.addEventListener("keydown",e=>{if(e.key==="Escape")hide()});
 const nav=document.getElementById("mainNav");
@@ -60,5 +60,5 @@ Message:
 ${message}
 
 Please let me know the consultation / availability details.`;
- window.open("https://wa.me/918818220086?text="+encodeURIComponent(text),"_blank");
+ window.open("https://wa.me/919581533399?text="+encodeURIComponent(text),"_blank");
 });
